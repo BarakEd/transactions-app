@@ -17,7 +17,7 @@ display: flex;
 `;
 
 const TableWrapper = styled.div`
-height: 60%;
+height: 100%;
 width: 50%;
 padding: 10px;
 display: flex;
