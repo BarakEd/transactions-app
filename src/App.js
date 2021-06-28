@@ -1,14 +1,12 @@
-import './App.css';
-import { useFetchTransactions } from './hooks';
+import React from 'react';
 import TransactionsPage from './components/TransactionsPage';
+import styles from './App.style';
 
 function App() {
-  const { transactions } = useFetchTransactions();
-  
   return (
-    <div className="App">
-      <TransactionsPage transactions={ transactions }/>
-    </div>
+    <styles.App>
+      <TransactionsPage/> 
+    </styles.App>
   );
 }
 
