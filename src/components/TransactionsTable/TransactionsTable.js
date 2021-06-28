@@ -29,9 +29,9 @@ const TransactionsTable = ({data}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data?.map?.((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
+            {data?.map?.((row, index) => (
+              <TableRow key={`${row.name} ${index}`}>
+                <TableCell >
                   {row.name}
                 </TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
