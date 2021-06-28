@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
 
 const container = styled.div`
   height: 100%;
@@ -31,18 +30,11 @@ const Title = styled.h2`
   text-decoration: underline;
 `;
 
-const StyledButton = styled(Button)` 
-  width: fit-content;
-  .MuiButton-label {
-    text-transform: none;
-  }
-  `;
 const styles = {
   container,
   TableWrapper,
   TablesWrapper,
   Title,
-  StyledButton,
 };
 
 export default styles;
