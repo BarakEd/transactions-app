@@ -1,1 +1,1 @@
-export const FETCH_URL = "http://localhost:3001/transactions";
+export const TRANSACTIONS_URL = "http://localhost:3001/transactions";
