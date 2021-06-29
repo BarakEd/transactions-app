@@ -4,7 +4,6 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import styles from './TransactionsTable.styles';
 
@@ -15,23 +14,27 @@ const useStyles = makeStyles({
 });
 
 const TransactionsTable = ({data}) => {
-  console.log(data)
   const classes = useStyles();
-
-  return (
+  const isDataEmpty = !data?.length; 
+  
+  return isDataEmpty 
+    ? <styles.container>
+      No Transactions
+    </styles.container> 
+    : (
     <styles.container>
       <TableContainer component={styles.StyledPaper}>
-        <Table className={classes.table} size="small">
-          <TableHead>
+        <Table stickyHeader className={classes.table} size="small">
+          <styles.StyledTableHead>
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell align="right">Amount</TableCell>
             </TableRow>
-          </TableHead>
+          </styles.StyledTableHead>
           <TableBody>
-            {data?.map?.((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
+            {data?.map?.((row, index) => (
+              <TableRow key={row.id}>
+                <TableCell >
                   {row.name}
                 </TableCell>
                 <TableCell align="right">{row.amount}</TableCell>
