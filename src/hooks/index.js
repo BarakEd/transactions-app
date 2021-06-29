@@ -11,7 +11,7 @@ export const useFetchTransactions = () => {
       .then(res => res.json())
       .catch(e => console.error(e));
 
-      setTransactions(res);
+      setTransactions(res?.transactions);
     };
     fetchTransactions()
   }, []);
