@@ -8,12 +8,13 @@ const container = styled.div`
   justify-content: center;
 `;
 
-const TablesWrapper = styled.div`
+const Wrapper = styled.div`
 height: 90%;
 border: 1px solid black;
 border-radius: 15px;
 width: 90%;
 display: flex;
+flex-direction: column;
 `;
 
 const TableWrapper = styled.div`
@@ -30,11 +31,36 @@ const Title = styled.h2`
   text-decoration: underline;
 `;
 
+
+const Footer = styled.div`
+display: flex;
+height: 20%;
+width: 100%;
+justify-content: center;
+`;
+const ButtonsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  > button {
+    margin: 0 20px;
+  }
+`;
+
+const TablesWrapper = styled.div`
+  display: flex;
+  height: 80%;
+`;
+
 const styles = {
   container,
   TableWrapper,
   TablesWrapper,
   Title,
+  Footer,
+  ButtonsWrapper,
+  Wrapper,
 };
 
 export default styles;
