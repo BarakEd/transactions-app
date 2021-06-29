@@ -7,12 +7,12 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '../Button';
 
 const AddTransactionDialog = ({ isOpen, handleClose, handleAdd }) => {
-const [tradingPartyValue, setTradingPartyValue] = useState('');
+const tradingPartyValue = 'me';
 const [counterPartyValue, setCounterPartyValue] = useState('');
 const [amount, setAmount] = useState('');
 const isAddEnabled = tradingPartyValue?.length > 0 
   && counterPartyValue?.length > 0 
-  && Number.isInteger(amount);
+  && (Number.isInteger(amount) && amount > 0);
 
   const onAddHandler = () => {
     handleAdd(
@@ -30,7 +30,6 @@ const isAddEnabled = tradingPartyValue?.length > 0
         <DialogContent>
         <TextField
             value={tradingPartyValue}
-            onChange={(e) => setTradingPartyValue(e.target.value)}
             margin="dense"
             label="Trading Party"
             type="text"

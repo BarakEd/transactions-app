@@ -31,48 +31,58 @@ const TransactionsPage = () => {
     setIsAddDialogOpen(false);
   };
 
-  const payingData = transactionsData
+  const payingData = transactionsData?.filter(item => item.amount < 0)
     ?.map?.(payTrans => ({
-      name: payTrans.tradingParty,
+      name: payTrans.counterParty,
       amount: Math.abs(payTrans.amount),
       id: payTrans.id,
     }));
 
-  const receivingData = transactionsData
+  const receivingData = transactionsData?.filter(item => item.amount > 0)
     ?.map?.(receiveTrans => ({
     name: receiveTrans.counterParty,
     amount: receiveTrans.amount,
     id: receiveTrans.id,
   }));
 
-  return (
-    <styles.container>
-      <styles.TablesWrapper>
-      <styles.TableWrapper>
-        <styles.Title>
-          Paying
-        </styles.Title>
-      <TransactionsTable data={ payingData }/>
-      <Button 
-        onClickHandler={ openAddDialogHandler } 
-        label='Add New Transaction'/>
-    </styles.TableWrapper>
-    <styles.TableWrapper>
-        <styles.Title>
-          Receiving
-        </styles.Title>
-      <TransactionsTable data={ receivingData }/>
-      <Button 
-        onClickHandler={ compressHandler } 
-        label='Compress Transactions'/>
-    </styles.TableWrapper>
-      </styles.TablesWrapper>
-      <AddTransactionDialog 
+  const renderAddDialog = () => {
+    return isAddDialogOpen && (<AddTransactionDialog 
         handleClose={ closeAddDialogHandler }
         isOpen={ isAddDialogOpen }
         handleAdd={ addTransactionHandler }
-      />
-    </styles.container>
+      />);
+  };
+
+  return (
+    <styles.container>
+      <styles.Wrapper>
+        <styles.TablesWrapper>
+          <styles.TableWrapper>
+            <styles.Title>
+              Paying
+            </styles.Title>
+            <TransactionsTable data={ payingData }/>
+          </styles.TableWrapper>
+          <styles.TableWrapper>
+            <styles.Title>
+              Receiving
+            </styles.Title>
+            <TransactionsTable data={ receivingData }/>
+          </styles.TableWrapper>
+        </styles.TablesWrapper>
+        <styles.Footer>
+          <styles.ButtonsWrapper>
+            <Button 
+              onClickHandler={ openAddDialogHandler } 
+              label='Add New Transaction'/>
+            <Button
+              onClickHandler={ compressHandler } 
+              label='Compress Transactions'/>
+          </styles.ButtonsWrapper>
+        </styles.Footer>
+      </styles.Wrapper>
+      {renderAddDialog()}
+      </styles.container>
   );
 };
 

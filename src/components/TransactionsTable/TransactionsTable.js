@@ -15,8 +15,13 @@ const useStyles = makeStyles({
 
 const TransactionsTable = ({data}) => {
   const classes = useStyles();
-
-  return (
+  const isDataEmpty = !data?.length; 
+  
+  return isDataEmpty 
+    ? <styles.container>
+      No Transactions
+    </styles.container> 
+    : (
     <styles.container>
       <TableContainer component={styles.StyledPaper}>
         <Table stickyHeader className={classes.table} size="small">
